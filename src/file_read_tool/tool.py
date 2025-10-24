@@ -5,7 +5,7 @@ import PyPDF2
 from docx import Documents
  
 class ReadFileTool(BaseTool):
-    name = "read_file_tool"
+    name = "file_read_tool"
     description = "Read CSV, PDF, TXT, DOCX, and JSON files"
  
     @tool
