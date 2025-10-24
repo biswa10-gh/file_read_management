@@ -1,14 +1,24 @@
-from crewai.tools import BaseTool, tool
+# CHANGES MADE:
+# 1️⃣ Changed import from `from crewai.tools import Tool` → `from crewai.tools import BaseTool`
+#     → CrewAI v1.1.0 uses BaseTool, not Tool.
+#
+# 2️⃣ Renamed the main method from `run()` → `_run()`
+#     → In v1.1.0, tool logic must be inside `_run()`, not `run()`.
+#
+# 3️⃣ No other logic changes — file reading logic remains the same.
+ 
+from crewai.tools import BaseTool  # ✅ Updated import
 import csv
 import json
 import PyPDF2
-from docx import Documents
+from docx import Document
  
-class ReadFileTool(BaseTool):
-    name = "file_read_tool"
+class ReadFileTool(BaseTool):  # ✅ Inherit from BaseTool
+    name = "read_file_tool"
     description = "Read CSV, PDF, TXT, DOCX, and JSON files"
  
-    def read_file(self, file_path: str):
+    def _run(self, file_path: str):  # ✅ Renamed from run() to _run()
+        """Reads a file and returns its contents depending on file type."""
         file_type = file_path.split(".")[-1].lower()
  
         try:
