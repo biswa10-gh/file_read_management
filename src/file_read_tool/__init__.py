@@ -1,2 +1,2 @@
-from .tool import run
+from tool import ReadFileTool
 __all__ = ["ReadFileTool", "run"]
