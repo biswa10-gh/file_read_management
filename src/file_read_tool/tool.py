@@ -8,8 +8,7 @@ class ReadFileTool(BaseTool):
     name = "file_read_tool"
     description = "Read CSV, PDF, TXT, DOCX, and JSON files"
  
-    @tool
-    def run(self, file_path: str):
+    def read_file(self, file_path: str):
         file_type = file_path.split(".")[-1].lower()
  
         try:
